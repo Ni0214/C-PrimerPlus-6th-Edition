@@ -1,0 +1,26 @@
+// chapter4exercise3.cpp : Write a program that asks the user to enter his or her first name and then last
+//name, and that then constructs, stores, and displays a third string, consisting of the
+//user’s last name followed by a comma, a space, and first name.Use char arrays and
+//functions from the cstring header file.A sample run could look like this:
+//Enter your first name : Flip
+//Enter your last name : Fleming
+//Here’s the information in a single string : Fleming, Flip
+//
+
+#include "stdafx.h"
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+
+int main()
+{
+	char fname[20],lname[20];
+	cout << "enter your first name:";
+	cin >> fname;
+	cout << "enter your last name:";
+	cin >> lname;
+
+	cout << "Here‘s the information in a single string:" << lname << ", " << fname << endl;
+    return 0;
+}
