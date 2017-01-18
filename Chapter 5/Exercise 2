@@ -1,0 +1,65 @@
+/* 
+Redo Listing 5.4 using a type array object instead of a built - in array
+
+and type long double instead of long long.Find the value of 100!
+
+
+
+Listing 5.4:
+
+#include <iostream>
+
+const int ArSize = 16;
+
+
+
+int main() {
+
+	long long factorials[ArSize];
+
+	factorials[0] = factorials[1] = 1;
+
+
+
+	for (int i = 2; i < ArSize; i++) {
+
+		factorials[i] = i * factorials[i - 1];
+
+	};
+
+
+
+	for (i = 0; i < ArSize; i++) {
+
+		std::cout << i << "!= " << factorials[i] << std::endl;
+
+	};
+
+	return 0;
+
+}
+
+*/
+
+
+#include "stdafx.h"
+#include<iostream>
+#include<array>
+
+using namespace std;
+
+int main()
+{
+	array<long double, 101>myArray;
+	myArray[0] = myArray[1] = 1;
+
+	for (int i = 2;i <= 100;i++)
+		myArray[i] = i*myArray[i - 1];
+	for (int i = 0;i <= 100;i++)
+		cout << i << "!=" << myArray[i]<<endl;
+	cout << 15 << "!=" << myArray[15] << endl; // test
+	cout << "50!=" << myArray[50] << endl;
+	cout << "99!=" << myArray[99] << endl;
+	cout <<"100!=" << myArray[100] << endl;
+		return 0;
+}
