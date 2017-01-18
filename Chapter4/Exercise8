@@ -1,0 +1,37 @@
+// chapter4exercise8.cpp : Do Programming Exercise 7 but use new to allocate a structure instead of declaring
+//a structure variable.Also have the program request the pizza diameter before it
+//requests the pizza company name
+
+#include "stdafx.h"
+#include<iostream>;
+#include<string>;
+using namespace std;
+
+
+int main()
+{
+	struct pizza {
+		string name;
+		float diameter;
+		float weight;
+	};
+
+	pizza*p = new pizza;      //allot memory for structure
+
+	cout << "please enter the diameter of the pizza:";
+	cin >> (*p).diameter;    //method 2 for member access
+
+	cin.get(); //extract 'enter' char from the temporay register
+
+	cout << "please enter the pizza name:";
+	getline(cin, p[0].name);  //method 1 for member access
+	
+	cout << "please enter the weight of the pizza:";
+	cin >> p-> weight;      //method 3 for member access
+
+	cout << "======the information you enter in is as following:======" << endl;
+	cout << "the pizza name is " << (*p).name << endl;     //method 2 
+	cout << "the pizza diameter is " << p-> diameter << " inche" << endl;   //method 3 
+	cout << "the pizza weight is " << p[0].weight << " grams" << endl;   //method 1 
+	return 0;
+}
