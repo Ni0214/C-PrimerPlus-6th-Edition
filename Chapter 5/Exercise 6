@@ -1,0 +1,95 @@
+// chapter5exercise6.cpp : Defines the entry point for the console application.
+//Do Programming Exercise 5 but use a two-dimensional array to store input for 3
+//years of monthly sales.Report the total sales for each individual year and for the
+//combined years.
+
+#include "stdafx.h"
+#include <iostream>
+#include<string>
+
+using namespace std;
+
+
+/*int main()//created by ni ni
+{
+
+	string month[3][12] = { 
+		{ "jan", "feb", "march", "april", "may", "june", "july", "auguest", "sept", "oct", "nov", "dec" },
+	{ "jan", "feb", "march", "april", "may", "june", "july", "auguest", "sept", "oct", "nov", "dec" },
+	{ "jan", "feb", "march", "april", "may", "june", "july", "auguest", "sept", "oct", "nov", "dec" } 
+	};
+
+	int sales[3][12], i, j, sum=0,sumTotal=0;
+
+	for (j = 0; j < 3; j++)
+	{
+		for (i = 0; i < 12; i++)
+		{
+			cout << "please enter sales for " << month[j][i] << " at " << j+1 << " year :" << endl;
+			cin >> sales[j][i];
+			sum += sales[j][i];
+		}
+		cout << "the total sales amount for "<< j+1<<" year will be: " << sum << endl << endl << endl;
+		
+		sumTotal += sum;
+		sum = 0;
+	}
+	
+	cout << "the Finaly sales amount for above 3 years will be:" << sumTotal << endl;
+	system("pause");
+	return 0;
+
+}*/
+int main()
+
+{
+
+	string year[3][12] = { { "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" },
+
+	{ "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" },
+
+	{ "Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec" }
+
+	};
+
+	int sales[3][12];
+
+	int total[3] = { 0,0,0 };
+
+	for (int j = 0; j < 3; j++)
+
+	{
+
+		cout << "-----ENTER SALES FOR YEAR " << j + 1 << "-----" << endl;
+
+		for (int i = 0; i < 12; i++) {
+
+			cout << "Enter sales for " << year[j][i] << ": ";
+
+			cin >> sales[j][i];
+
+		}
+
+	}
+
+	for (int j = 0; j < 3; j++)
+
+	{
+
+		cout << "-----SALES FOR YEAR " << j + 1 << "-----" << endl;
+
+		for (int i = 0; i < 12; i++) {
+
+			total[j] += sales[j][i];
+
+		}
+
+		cout << "Total sales: " << total[j] << endl;;
+
+	}
+
+	system("pause");
+
+	return 0;
+
+}
