@@ -1,0 +1,38 @@
+// chapter4exercise7.cpp : William Wingate runs a pizza-analysis service. For each pizza, he needs to record
+//the following information :
+// The name of the pizza company, which can consist of more than one word
+//The diameter of the pizza
+// The weight of the pizza
+//Devise a structure that can hold this information and write a program that uses a
+//structure variable of that type.The program should ask the user to enter each of the
+//preceding items of information, and then the program should display that information.
+//Use cin(or its methods) and cout.
+//
+
+#include "stdafx.h"
+#include<iostream>;
+#include<string>;
+using namespace std;
+
+
+int main()
+{
+	struct pizza {
+		string name;
+		float diameter;
+		float weight;
+	}pizza1;
+
+	cout << "please enter the pizza name:";
+	getline(cin,pizza1.name);
+	cout << "please enter the diameter of the pizza:";
+	cin >> pizza1.diameter;
+	cout << "please enter the weight of the pizza:";
+	cin >> pizza1.weight;
+
+	cout << "the information you enter in is as following:"<<endl;
+	cout << "the pizza name is "<< pizza1.name<<endl;
+	cout << "the pizza diameter is " << pizza1.diameter <<" inche"<< endl;
+	cout << "the pizza weight is " << pizza1.weight <<" grams"<< endl;
+    return 0;
+}
