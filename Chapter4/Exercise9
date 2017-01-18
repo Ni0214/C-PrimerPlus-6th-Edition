@@ -1,0 +1,47 @@
+/ chapter4exercise9.cpp :  Do Programming Exercise 6, but instead of declaring an array of three CandyBar
+//structures, use new to allocate the array dynamically.
+
+#include "stdafx.h"
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+int main()
+{
+	int n, i;
+	struct candybar {
+		string brandname;
+		float weight;
+		int calories;
+	};
+
+	
+	//candybar *p = new candybar;
+	candybar *p = new candybar[3];//define the array to candybar,important
+
+
+	for (n = 0; n < 3; n++)
+	{
+		cout << "=======Enter the information for candybar " << n + 1 << " =========" << endl;
+		cout << "pls enter the barndname:";
+		getline(cin, p[n].brandname);
+
+		cout << "pls enter the weight:";
+		cin >> p[n].weight;
+
+		cout << "pls enter the calories:";
+		cin >> p[n].calories;
+		cin.get();//to extract the ' enter' char from the register which stored by 'cin' in last step,so that will not affect the next operation by 'getline'
+	}
+	cout << endl << endl;
+	for (i = 0; i < 3;i++)
+	{
+		cout << " ********the candybar " << i + 1 << " you entered is: ******** " << endl;
+		cout << "Brandname is " << p[i].brandname << endl;
+		cout << "weight is " << p[i].weight << endl;
+		cout << "calories is " << p[i].calories << endl;
+	}
+	return 0;
+}
+
