@@ -1,0 +1,31 @@
+// chapter5exercise3.cpp : Write a program that asks the user to type in numbers.After each entry, the program
+//should report the cumulative sum of the entries to date.The program should
+//terminate when the user enters 0.
+//
+
+#include "stdafx.h"
+#include<iostream>
+
+using namespace std;
+
+
+int main()
+{
+	cout << "-----Enter 0 to Exit------" << endl;
+
+	int i=1, sum=0;
+
+	cout << "please enter a radom number:" << endl;
+	cin >> i;
+	
+	while (i!= 0)
+	{
+	
+		sum += i;
+		cout << "the cumulative sum of the entries to date is:" << sum << endl;
+		cout << "please enter a radom number:" << endl;
+		cin >> i;
+	}
+	
+	return 0;
+}
