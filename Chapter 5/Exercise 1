@@ -1,0 +1,28 @@
+// chapter5exercise1.cpp : Write a program that requests the user to enter two integers.The program should
+//then calculate and report the sum of all the integers between and including the two
+//integers.At this point, assume that the smaller integer is entered first.For example, if
+//the user enters 2 and 9, the program should report that the sum of all the integers
+//from 2 through 9 is 44.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	
+	
+	int x,y,sum;
+	cout << "please enter 2 numbers in ascending order, press 'enter' to seperate each number" << endl;
+	cin >> x;
+	cin >> y;
+	sum = x;
+	while (x < y)
+		x++,
+		sum +=x;
+	
+
+	cout << "the sum of all integers between and including the above 2 numbers is:" << endl;
+	cout << sum << endl;
+}
