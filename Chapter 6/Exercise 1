@@ -1,0 +1,41 @@
+// chapter6exercise1.cpp : Write a program that reads keyboard input to the @ symbol and that echoes the
+//input except for digits, converting each uppercase character to lowercase, and vice
+//versa. (Don’t forget the cctype family.)
+//
+
+#include "stdafx.h"
+#include<iostream>
+#include<string>
+#include<cctype>
+
+using namespace std;
+
+
+
+int main()
+{
+	cout << "Enter text for analysis: and type @ to terminate input " << endl;
+	char ch, ch2,ch3;
+
+	while (cin.get(ch) && ch != '@') //test for sentinel
+	{
+		if (isalpha(ch)) //is it an alphabtic character?
+		{
+			if (islower(ch))  //is it an lowercase letter?
+				
+				cout << "You just enter a characters: " << ch << " ,so the uppercase for this letter is: " << char(toupper(ch)) << endl;
+			else
+				
+				cout << "You just enter a characters: " << ch << " ,so the lowercase for this letter is: " << char(tolower(ch)) << endl;
+		}
+		else
+			cout << "the characters you type in is not a letter." << endl;
+
+		cin.get(); // extract the 'enter'characters, so that will not affect the program
+
+		cout << "***********************************************************************" << endl;
+	}
+	
+	
+    return 0;
+}
