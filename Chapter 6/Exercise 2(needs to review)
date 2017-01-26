@@ -1,0 +1,60 @@
+// chapter6exercise2.cpp : Write a program that reads up to 10 donation values into an array of double. (Or, if
+//you prefer, use an array template object.) The program should terminate input on
+//non - numeric input.It should report the average of the numbers and also report
+//how many numbers in the array are larger than the average.
+//
+
+#include "stdafx.h"
+#include<iostream>;
+#include<cctype>;
+
+using namespace std;
+
+
+
+int main()
+{
+	cout << "please enter  digital value (less than 10 numbers) :" << endl;
+
+	double ary[10], sum=0, average;
+	int i,j,bigger=0;
+	for (i = 0;i < 10; i++) //input the array elements
+	{
+		cin >> ary[i];
+		//cin.get();//extract 'enter'character
+		while ((isdigit(ary[i])))
+		{
+			cout << "the last value inputted is non-numeric, so the input will end here" << endl;
+
+			break;
+		}
+
+	}
+
+	j = i;
+
+	cout << "the array you enterd is: [ ";
+	for (i = 0; i < j; i++) //output the array and calulate the average
+	{
+		cout << ary[i] << " ";
+		sum += ary[i];
+		
+	}
+	
+	
+	cout<<" ]" << endl;
+
+	average = sum / j ;
+	cout << " the average value for above array is : " << average << endl;
+
+	for (i = 0;i < j; i++)//compare the array value and average
+	{
+		if (ary[i] > average)
+			bigger++;
+
+	}
+
+	cout << " the array have " << bigger << " numbers that larger than average" << endl;
+
+    return 0;
+}
