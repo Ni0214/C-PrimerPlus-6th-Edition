@@ -21,9 +21,12 @@ int main()
 	for (i = 0;i < 10; i++) //input the array elements
 	{
 		cin >> ary[i];
-		//cin.get();//extract 'enter'character
-		while ((isdigit(ary[i])))
+		
+		//if(isdigit(int(ary[i]))) can not use it as isdigit()is only check for 1 char
+		if (!cin)
 		{
+			cin.clear();
+			cin.ignore();
 			cout << "the last value inputted is non-numeric, so the input will end here" << endl;
 
 			break;
