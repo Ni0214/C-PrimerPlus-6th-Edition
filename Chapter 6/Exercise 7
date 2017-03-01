@@ -1,0 +1,55 @@
+/*chapter6exercise7.cpp : Write a program that reads input a word at a time until a lone q is entered.The
+program should then report the number of words that began with vowels, the number
+that began with consonants, and the number that fit neither of those categories.
+One approach is to use isalpha() to discriminate between words beginning with
+letters and those that don’t and then use an if or switch statement to further identify
+those passing the isalpha() test that begin with vowels.A sample run might
+look like this:
+Enter words(q to quit) :
+	The 12 awesome oxen ambled
+	quietly across 15 meters of lawn.q
+	5 words beginning with vowels
+	4 words beginning with consonants
+	2 others
+*/
+
+#include "stdafx.h"
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+
+int main()
+{
+	int vowelcount = 0, consonantcount = 0, neither = 0;
+	string input;
+
+	cout << "Please enter words (q to quit) : " << endl;
+	
+	
+	while (cin >> input && input.compare("q") != 0) 
+
+	{
+		if (isalpha(input[0]))
+		{
+			switch (input[0])
+			{
+			case 'a':
+			case 'e':
+			case 'i':
+			case 'o':
+			case 'u':
+				vowelcount++; break;
+			default:   consonantcount++;break;
+
+			}
+		}
+		else { neither++; }
+	}
+	cout << vowelcount << " words beginning with vowels" << endl;
+	cout << consonantcount << " words beginning with consonants" << endl;
+	cout << neither << " others";
+
+    return 0;
+}
