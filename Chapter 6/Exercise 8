@@ -1,0 +1,54 @@
+/* chapter6exercise8.cpp : Write a program that opens a text file, reads it character-by-character to the end of
+the file, and reports the number of characters in the file.
+*/
+
+#include "stdafx.h"
+#include<iostream>
+#include <fstream>  //file I/O support
+#include <cstdlib>    //support for exit()
+
+
+
+const int SIZE = 60;
+int main()
+{
+	using namespace std;
+	char filename[SIZE];
+	ifstream infile;       //object for handling file input
+
+	cout << "enter name of file: ";
+	cin.getline(filename, SIZE);
+	infile.open(filename);    //associate infile with a file
+
+	if (!infile.is_open()) //failed to open file
+	{
+		cout << "could not open the file" << filename << endl;
+		cout << "prgram terminating.\n";
+		exit(EXIT_FAILURE);
+	}
+
+	char value;
+	int count = 0; //number of iteams read
+
+	infile >> value;//get first value
+	while (infile.good())// while input goof and not at EOF
+	{
+		++count;//one more iteams read
+		infile >> value;//get next value
+	}
+	if (infile.eof())
+		cout << "end of file reached.\n";
+	else if (infile.fail())
+		cout << "input terminated by data mismatch.\n";
+	else
+		cout << "input terminated for unknow reason.\n";
+	if (count == 0)
+		cout << "no data processed.\n";
+	else {
+		cout << "items read:" << count << endl;
+	}
+	infile.close();//finished with the file
+
+
+    return 0;
+}
