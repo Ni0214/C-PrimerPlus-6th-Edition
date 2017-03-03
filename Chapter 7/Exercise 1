@@ -1,0 +1,35 @@
+/* chapter7exercise1.cpp : Defines the entry point for the console application.
+//Write a program that repeatedly asks the user to enter pairs of numbers until at
+least one of the pair is 0. For each pair, the program should use a function to calculate
+the harmonic mean of the numbers.The function should return the answer to
+main(), which should report the result.The harmonic mean of the numbers is the
+inverse of the average of the inverses and can be calculated as follows :
+harmonic mean = 2.0 × x × y / (x + y) */
+
+#include "stdafx.h"
+#include <iostream>
+
+
+
+
+int main()
+{
+	using namespace std;
+	double x, y,harmoniceMean;
+	cout << "please enter pairs of number (enter 0 to quit): " << endl;
+	cin >> x;
+	cin >> y;
+
+	while (x*y != 0) 
+	{
+		harmoniceMean = 2.0*x*y / (x + y);
+		cout << " the harmonic mean for number " << x << " and " << y << " is " << harmoniceMean << endl<<endl;
+		cout << "please enter pairs of number (enter 0 to quit): " << endl;
+		cin >> x;
+		cin.get();
+		cin >> y;
+	}
+
+	cout << " You just entered number 0. Bye ^^" << endl;
+    return 0;
+}  
