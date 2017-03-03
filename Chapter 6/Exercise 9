@@ -1,0 +1,108 @@
+/* chapter6exercise9.cpp : Do Programming Exercise 6 but modify it to get information from a file.The first
+item in the file should be the number of contributors, and the rest of the file should
+consist of pairs of lines, with the first line of each pair being a contributor’s name
+and the second line being a contribution.That is, the file should look like this:
+4
+Sam Stone
+2000
+Freida Flass
+100500
+Tammy Tubbs
+5000
+Rich Raptor
+55000
+*/
+
+#include "stdafx.h"
+#include<iostream>
+#include<string>
+#include <fstream>  //file I/O support 
+#include <cstdlib>    //support for exit() 
+
+
+
+int main()
+{
+	using namespace std;
+	struct contr
+	{
+		string name;
+		double amount;
+	};
+
+	ifstream infile("donationList.txt");       //object for handling file input 
+	if (!infile.is_open()) //failed to open file 
+	{
+		cout << "could not open the file" << endl;
+		cout << "prgram terminating.\n";
+		exit(EXIT_FAILURE);
+	}
+
+	int numbercon, i;
+	infile >> numbercon;//get first value 
+
+	
+	contr *totalcontr = new contr[numbercon];
+
+	while (infile.good())// while input good and not at EOF 
+
+	{
+		for (i = 0; i < numbercon;i++)
+		{
+			infile.get();//extract the '/n' for latest input
+			getline(infile, totalcontr[i].name);
+			infile >> totalcontr[i].amount;
+		}
+
+		if (infile.eof())
+			cout << "end of file reached.\n";
+		else if (infile.fail())
+			cout << "input terminated by data mismatch.\n";
+		else
+			cout << "input terminated for unknow reason.\n";
+
+		infile.close();//finished with the file 
+
+
+
+
+		cout << "************Grand Patrons List**********" << endl;
+		for (i = 0; i < numbercon;i++)
+		{
+			if (totalcontr[i].amount >= 10000)
+			{
+				cout << totalcontr[i].name << " donated " << totalcontr[i].amount << " dollars" << endl;;
+			}
+		}
+
+		cout << endl;
+
+		cout << "************ Patrons List**********" << endl;
+		for (i = 0; i < numbercon;i++)
+		{
+			if (totalcontr[i].amount < 10000 && totalcontr[i].amount >0)
+
+			{
+				cout << totalcontr[i].name << " donated " << totalcontr[i].amount << " dollars" << endl;;
+			}
+		}
+
+		cout << endl;
+		cout << "************ None List **********" << endl;
+		for (i = 0; i < numbercon;i++)
+		{
+			if (totalcontr[i].amount <= 0)
+			{
+				cout << totalcontr[i].name << " None " << endl;;
+			}
+		}
+
+		cout << endl;
+		delete[]totalcontr;//free the buffer
+
+
+		return 0;
+
+
+	}
+}
