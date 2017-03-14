@@ -1,0 +1,73 @@
+/* chapter7exercise3.cpp : Here is a structure declaration:
+struct box
+{
+	char maker[40];
+	float height;
+	float width;
+	float length;
+	float volume;
+};
+a.Write a function that passes a box structure by value and that displays the
+value of each member.
+b.Write a function that passes the address of a box structure and that sets the
+volume member to the product of the other three dimensions.
+c.Write a simple program that uses these two functions.
+*/
+
+
+#include "stdafx.h"
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+struct box
+{
+	char maker[40];
+	float height;
+	float width;
+	float length;
+	float volume;
+};
+
+
+void display(box figure1);
+float handle(box figure2);
+
+int main()
+{
+	box boxes;
+
+	cout << "please enter the box name: ";
+   cin >> boxes.maker;
+
+	cout << "please enter the height: ";
+	cin >> boxes.height;
+	
+	cout << "please enter the width: ";
+	cin >> boxes.width;
+
+	cout << "please enter the length: ";
+	cin >> boxes.length;
+
+	boxes.volume=handle(boxes);
+	display(boxes);
+    return 0;
+}
+
+float handle(box figure2)
+{
+	figure2.volume = figure2.height*figure2.width*figure2.length;
+	return figure2.volume;
+}
+
+void display(box figure1)
+{
+	cout << "****************************************" << endl;
+	cout << "The figure enterd is following: " << endl;
+	cout << "name : " << figure1.maker << endl;
+	cout << "height : " << figure1.height << endl;
+	cout << "width : " << figure1.width << endl;
+	cout << "length : " << figure1.length<< endl;
+	cout << "So the volume for the box will be: " << figure1.volume << endl;
+}
