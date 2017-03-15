@@ -1,0 +1,33 @@
+/*chapter7exercise5.cpp : Define a recursive function that takes an integer argument and returns the factorial
+of that argument.Recall that 3 factorial, written 3!, equals 3 × 2!, and so on, with 0!
+defined as 1. In general, if n is greater than zero, n!= n * (n - 1)!.Test your function
+in a program that uses a loop to allow the user to enter various values for which the
+program reports the factorial.
+*/
+
+#include "stdafx.h"
+#include<iostream>
+
+
+int recusive(int number1);
+
+
+int main()
+{
+	using namespace std;
+	int number2;
+	cout << " Please enter the interger number : " << endl;
+	cin >> number2;
+	cout << number2 << "! = " << recusive(number2) << endl;;
+
+    return 0;
+}
+
+int recusive(int number1)
+{
+	
+
+
+	if (number1 == 0) return 1; //0!=1
+	return (number1*recusive(number1 - 1));
+}
