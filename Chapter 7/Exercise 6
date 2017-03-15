@@ -1,0 +1,77 @@
+/* chapter7exercise6.cpp : Write a program that uses the following functions:
+Fill_array() takes as arguments the name of an array of double values and an
+array size.It prompts the user to enter double values to be entered in the array.It
+ceases taking input when the array is full or when the user enters non - numeric
+input, and it returns the actual number of entries.
+Show_array() takes as arguments the name of an array of double values and an
+array size and displays the contents of the array.
+Reverse_array() takes as arguments the name of an array of double values and an
+array size and reverses the order of the values stored in the array.
+The program should use these functions to fill an array, show the array, reverse the
+array, show the array, reverse all but the first and last elements of the array, and then
+show the array.
+*/
+
+#include "stdafx.h"
+#include<iostream>
+
+int fill_array(double array1[],int arraysize1);
+void show_array(double array1[], int arraysize1);
+void reverse_array(double array1[], int arraysize1);
+using namespace std;
+
+int main()
+{
+	using namespace std;
+	int sizemax,sizeAfterFill;
+	double array2[10];
+
+	cout << "please enter the size of the array : ";
+	cin >> sizemax;
+	sizeAfterFill=fill_array( array2, sizemax);
+	show_array(array2, sizeAfterFill);
+	reverse_array(array2, sizeAfterFill);
+
+    return 0;
+}
+
+int fill_array(double array1[], int arraysize1)
+{
+	int i;
+	
+	cout << "please enter the vaule for the array ( double interger only) : "<<endl;
+	for (i = 0; i < arraysize1; i++) 
+	{
+		if (cin) cin >> array1[i];
+		else 
+		{ cout << "bad input, end here " << endl;
+		i = i - 1;//ignore the last bad input
+		break; }
+	}
+	
+	return i;
+}
+
+void show_array(double array1[], int arraysize1)
+{
+	cout << "the enterd array is: ";
+	for (int i = 0; i < arraysize1; i++)
+	{
+		
+		cout << array1[i] << " ";
+
+	}
+
+}
+
+void reverse_array(double array1[], int arraysize1)
+{
+	cout << endl<<"the reversed array is: ";
+
+	for (int i = arraysize1-1; i >=0; i--)
+	{
+
+		cout << array1[i] << " ";
+
+	}
+}
