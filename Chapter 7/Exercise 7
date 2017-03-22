@@ -1,0 +1,87 @@
+/* chapter7exercise7.cpp : Redo Listing 7.7, modifying the three array-handling functions to each use two
+pointer parameters to represent a range.The fill_array() function, instead of
+returning the actual number of items read, should return a pointer to the location
+after the last location filled; the other functions can use this pointer as the second
+argument to identify the end of the data.
+*/
+
+#include "stdafx.h"
+// arrfun3.cpp -- array functions and const
+#include <iostream>
+const int Max = 5;
+// function prototypes
+double *fill_array(double *first, double *last);
+void show_array(const double *first, const double *last); // don't change data
+void revalue( double *first, double *last,double factor);
+int main()
+{
+	using namespace std;
+	double properties[Max];
+	double *last2;
+		last2= fill_array(properties, properties+Max);
+show_array(properties, last2);
+
+
+	if (last2 > 0)  //means more than 1 valued number inputted
+	{
+		cout << "Enter revaluation factor: ";
+		double factor;
+		while (!(cin >> factor)) // bad input
+		{
+			cin.clear();
+			while (cin.get() != '\n')
+				continue;
+			cout << "Bad input; Please enter a number: ";
+		}
+		revalue(properties,last2, factor);
+		show_array(properties, last2);
+	}
+	cout << "Done.\n";
+	cin.get();
+	cin.get();
+	return 0;
+}
+double *fill_array(double *first, double*last)
+{
+	using namespace std;
+	double temp;
+	double*pt;
+	int i=0;
+	for (pt = first; pt!=last;pt++, i++)
+	{
+		cout << "Enter value #" << (i + 1) << ": ";
+		cin >> temp;
+		if (!cin) // bad input
+		{
+			cin.clear();
+			while (cin.get() != '\n')
+				continue;
+			cout << "Bad input; input process terminated.\n";
+			break;
+		}
+		else if (temp < 0) // signal to terminate
+			break;
+		*pt = temp;
+	}
+	return pt;
+}
+// the following function can use, but not alter,
+// the array whose address is ar
+void show_array(const double *first, const double*last)
+{
+	using namespace std;
+	const double *pt;
+	int i = 0;
+	for (pt = first; pt != last;pt++, i++)
+	{
+		cout << "Property #" << (i + 1) << ": $";
+		cout << *pt<<endl;
+	}
+}
+// multiplies each element of ar[] by r
+void revalue(double *first, double *last, double factor)
+{
+	double *pt;
+	for (pt = first; pt != last;pt++)
+		*pt *= factor;
+}
