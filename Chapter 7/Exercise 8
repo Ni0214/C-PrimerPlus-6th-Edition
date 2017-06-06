@@ -1,0 +1,60 @@
+/* chapter7exercise8.cpp : Redo Listing 7.15 without using the array class. Do two versions:
+a.Use an ordinary array of const char * for the strings representing the season
+names, and use an ordinary array of double for the expenses.
+b.Use an ordinary array of const char * for the strings representing the season
+names, and use a structure whose sole member is an ordinary array of
+double for the expenses. (This design is similar to the basic design of the
+	array class.)
+*/
+
+////this program is did for version b
+#include "stdafx.h"
+#include <iostream>
+#include <array>
+#include <string>
+
+using namespace std;
+
+char *ptr[4] =
+{ "Spring", "Summer", "Fall", "Winter" };
+
+struct expense {
+	double expen[4];
+};
+
+struct expense ep1;
+
+void fill(struct expense &pa);
+void show(struct  expense da);
+
+int main()
+{
+	
+	fill(ep1);
+	show(ep1);
+	return 0;
+}
+void fill(struct expense &pa)
+{
+	
+	for (int i = 0; i < 4; i++)
+	{
+		
+		cout << " Enter " << ptr[i]<< " expenses: ";
+		cin >> pa.expen[i];
+		cout << "test 1  " << pa.expen[i] << endl;
+		
+	}
+}
+void show(const expense da)
+{
+	
+	double total = 0.0;
+	cout << "\nEXPENSES\n";
+	for (int i = 0; i < 4; i++)
+	{
+		cout << ptr[i] << ": $" << da.expen[i] << endl;
+		total += da.expen[i];
+	}
+	cout << "Total Expenses: $" << total << endl;
+}
