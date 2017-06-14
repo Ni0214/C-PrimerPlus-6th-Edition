@@ -1,0 +1,53 @@
+//// chapter8 exercise3.cpp : Write a function that takes a reference to a string object as its parameter and that
+//converts the contents of the string to uppercase.Use the toupper() function
+//described in Table 6.4 of Chapter 6.Write a program that uses a loop which allows
+//you to test the function with different input.A sample run might look like this:
+//Enter a string(q to quit) : go away
+//GO AWAY
+//Next string(q to quit) : good grief!
+//GOOD GRIEF!
+//Next string(q to quit) : q
+//Bye.
+////
+
+#include "stdafx.h"
+#include<iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+void change(string &);
+
+int main()
+{
+	string str1;
+	
+	cout << "Enter a string (q to quit) : ";
+	while (cin)
+	{
+		
+		getline(cin, str1);
+		if (str1 == "q")
+		{
+			cout << "Bye" << endl;
+			break;
+		}
+		else
+		{
+			change(str1);
+			cout << "Next string (q to quit) : ";
+		}
+	}
+	
+    return 0;
+}
+
+void change(string &sptr)
+{
+
+		std::transform(sptr.begin(), sptr.end(), sptr.begin(), ::toupper);
+		cout << sptr << endl;
+	
+	
+}
