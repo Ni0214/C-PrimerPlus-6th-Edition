@@ -1,0 +1,47 @@
+//// chapter8exercise5.cpp : Write a template function max5() that takes as its argument an array of five items
+//of type T and returns the largest item in the array. (Because the size is fixed, it can
+//	be hard - coded into the loop instead of being passed as an argument.) Test it in a
+//	program that uses the function with an array of five int value and an array of five
+//	double values.
+////
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+template <typename T>
+T max5(T x[]);
+
+int main()
+{
+	int y[5];
+	double z[5];
+	cout << "Please enter 5 integer numbers:";
+	for (int i = 0;i < 5;i++)
+	{
+		cin >> y[i];
+		
+	}
+	cout << "The max value is :" << max5(y) << endl<<endl;
+
+	cout << "Please enter 5 double numbers:";
+	for (int i = 0;i < 5;i++)
+	{
+		cin >> z[i];
+	}
+	cout << "The max value is :" << max5(z) << endl;
+    return 0;
+}
+
+template <typename T>
+T max5(T x[])
+{
+	T temp=x[0];
+	for (int i = 1;i < 5;i++)
+	{
+		if (x[i]>=temp)
+			temp = x[i];
+	}
+
+	return temp;
+}
